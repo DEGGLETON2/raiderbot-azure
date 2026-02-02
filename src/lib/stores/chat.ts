@@ -115,7 +115,7 @@ export async function sendMessage(content: string): Promise<void> {
       content: m.content,
     }));
     
-    const response = await fetch('/api/chat', {
+    const response = await fetch('/svc/chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
