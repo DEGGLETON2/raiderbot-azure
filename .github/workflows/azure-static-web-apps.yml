@@ -47,8 +47,8 @@ jobs:
           app_location: "/"
           # API location - SvelteKit handles API routes
           api_location: ""
-          # Output location - where the built app is
-          output_location: "build"
+          # Output location - where the built static files are (adapter creates build/static)
+          output_location: "build/static"
           # Skip API build since SvelteKit handles it
           skip_api_build: true
 
