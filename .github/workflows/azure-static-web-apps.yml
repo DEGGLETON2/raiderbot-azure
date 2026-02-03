@@ -45,11 +45,11 @@ jobs:
           action: "upload"
           # App location - the root of the SvelteKit app
           app_location: "/"
-          # API location - SvelteKit handles API routes
-          api_location: ""
+          # API location - Azure Functions for SSR (adapter creates build/server)
+          api_location: "build/server"
           # Output location - where the built static files are (adapter creates build/static)
           output_location: "build/static"
-          # Skip API build since SvelteKit handles it
+          # Skip API build since we already built it
           skip_api_build: true
 
   close_pull_request_job:
