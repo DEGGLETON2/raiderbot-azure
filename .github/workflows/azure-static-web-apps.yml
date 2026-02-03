@@ -52,7 +52,8 @@ jobs:
           api_location: "build/server"
           # Output location - where the built static files are (adapter creates build/static)
           output_location: "build/static"
-          # Skip API build since we already built it
+          # Skip both app and API build since we already built everything
+          skip_app_build: true
           skip_api_build: true
 
   close_pull_request_job:
