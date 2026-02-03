@@ -105,7 +105,7 @@ const protectedRoutes: Handle = async ({ event, resolve }) => {
   
   if (!event.locals.user && !isDevelopment) {
     // For API routes, return 401
-    if (pathname.startsWith('/api/')) {
+    if (pathname.startsWith('/svc/')) {
       return new Response(JSON.stringify({ error: 'Authentication required' }), {
         status: 401,
         headers: { 'Content-Type': 'application/json' },

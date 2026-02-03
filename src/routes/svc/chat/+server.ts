@@ -1,6 +1,6 @@
 /**
  * Chat API Endpoint for RaiderBot Azure
- * POST /api/chat
+ * POST /svc/chat
  * 
  * Receives chat messages and agent selection, calls Snowflake Cortex Agent,
  * and returns the assistant response.

@@ -18,7 +18,7 @@ const config = {
 					identityProviders: {
 						azureActiveDirectory: {
 							registration: {
-								openIdIssuer: 'https://login.microsoftonline.com/{AZURE_AD_TENANT_ID}/v2.0',
+								openIdIssuer: 'https://login.microsoftonline.com/293a9937-d3a3-42b7-ad71-f9e7210a432e/v2.0',
 								clientIdSettingName: 'AZURE_AD_CLIENT_ID',
 								clientSecretSettingName: 'AZURE_AD_CLIENT_SECRET'
 							}
