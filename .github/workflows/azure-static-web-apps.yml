@@ -54,9 +54,6 @@ jobs:
           output_location: "build/static"
           # Skip API build since we already built it with npm run build
           skip_api_build: true
-        env:
-          # Skip Oryx build since we already built everything
-          SKIP_BUILD: "true"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
