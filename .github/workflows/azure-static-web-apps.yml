@@ -46,15 +46,17 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          # App location - point directly to the built static files
-          app_location: "build/static"
+          # App location - root of the SvelteKit app (per adapter docs)
+          app_location: "./"
           # API location - Azure Functions for SSR (adapter creates build/server)
           api_location: "build/server"
-          # Output location - empty since app_location already points to built files
-          output_location: ""
-          # Skip both app and API build since we already built everything
-          skip_app_build: true
+          # Output location - where the built static files are (adapter creates build/static)
+          output_location: "build/static"
+          # Skip API build since we already built it with npm run build
           skip_api_build: true
+        env:
+          # Skip Oryx build since we already built everything
+          SKIP_BUILD: "true"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
