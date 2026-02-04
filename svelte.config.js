@@ -1,40 +1,13 @@
-import adapter from 'svelte-adapter-azure-swa';
+import adapter from '@sveltejs/adapter-vercel';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
 		adapter: adapter({
-			customStaticWebAppConfig: {
-				routes: [
-					{ route: '/svc/*', allowedRoles: ['authenticated'] }
-				],
-				responseOverrides: {
-					'401': {
-						redirect: '/.auth/login/aad?post_login_redirect_uri=.referrer',
-						statusCode: 302
-					}
-				},
-				auth: {
-					identityProviders: {
-						azureActiveDirectory: {
-							registration: {
-								openIdIssuer: 'https://login.microsoftonline.com/293a9937-d3a3-42b7-ad71-f9e7210a432e/v2.0',
-								clientIdSettingName: 'AZURE_AD_CLIENT_ID',
-								clientSecretSettingName: 'AZURE_AD_CLIENT_SECRET'
-							}
-						}
-					}
-				},
-				platform: {
-					apiRuntime: 'node:20'
-				},
-				globalHeaders: {
-					'X-Content-Type-Options': 'nosniff',
-					'X-Frame-Options': 'DENY',
-					'X-XSS-Protection': '1; mode=block',
-					'Referrer-Policy': 'strict-origin-when-cross-origin'
-				}
-			}
+			// Use Node.js runtime for Snowflake SDK compatibility
+			runtime: 'nodejs22.x',
+			// Split API routes into separate functions for better cold start
+			split: true
 		})
 	}
 };
